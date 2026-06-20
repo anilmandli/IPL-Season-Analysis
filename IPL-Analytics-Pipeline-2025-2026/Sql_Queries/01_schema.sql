@@ -81,8 +81,50 @@ CREATE TABLE ball_by_ball (
     is_wicket           INT,
     bowling_team        VARCHAR(60)
 );
+CREATE TABLE teams (
+    team_id     INT PRIMARY KEY auto_increment,
+    team_name   VARCHAR(60),
+    city        VARCHAR(50),
+    short_name  VARCHAR(10)
+);
+
+insert into teams (team_name,city,short_name)
+values
+('Chennai Super Kings','Chennai','CSK'),
+('Delhi Capitals','Delhi','DC'),
+('Gujrat Titans','Ahmedabad','GT'),
+('Kolkata Knight Riders','Kolkata','KKR'),
+('Lucknow Super Giants','Lucknow','LSG'),
+('Mumbai Indians','Mumbai','MI'),
+('Panjab Kings','Mohali','PBSK'),
+('Rajstan Royals','Jaipur','RR'),
+('Royal Challengers Bengaluru','Bengluru','RCB'),
+('Sunrisers Hyderabad','Hydrabad','SRH');
+
+ALTER TABLE teams
+ADD INDEX idx_team_name (team_name);
+
+ALTER TABLE matches
+ADD INDEX idx_team1   (team1),
+ADD INDEX idx_team2   (team2),
+ADD INDEX idx_winner  (winner);
+
+ALTER TABLE batting_stats
+ADD INDEX idx_bat_team (team);
+
+ALTER TABLE bowling_stats
+ADD INDEX idx_bowl_team (bowling_team);
 
 
+ALTER TABLE ball_by_ball
+ADD INDEX idx_bb_batting_team (batting_team),
+ADD INDEX idx_bb_bowling_team (bowling_team);
+
+SHOW INDEX FROM teams;
+SHOW INDEX FROM matches;
+SHOW INDEX FROM batting_stats;
+
+select * from teams;
 select  * from matches;
 select * from batting_stats;
 select * from bowling_stats;
@@ -106,9 +148,10 @@ ADD INDEX idx_bowler (bowler);
 SHOW INDEX FROM matches;
 SHOW INDEX FROM batting_stats;
 
+use ipl_real_db;
+select * from teams;
 select  * from matches;
 select * from batting_stats;
 select * from bowling_stats;
 select * from ball_by_ball;
-
 
