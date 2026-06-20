@@ -61,6 +61,8 @@ Query results exported as CSV from MySQL Workbench, loaded into `visualization_n
 Connected Power BI Desktop directly to the local MySQL database. Used **Power Query** to unpivot the `team1`/`team2` columns in the matches table into a single `team_name` column (since Power BI only supports one active relationship per table pair) — this enabled accurate team-level filtering across all visuals.
 
 **Page 1 — Match Overview**
+![IPL Match Overview Dashboard Screenshot](https://1drv.ms/i/c/c3fc1c78ffbc671c/IQBTRZNE7M7bSb0Mmulcfe_OAd97l0fnZEg3sSsuRmpVZuA?e=HMWgdW)
+)
 - KPI cards: Total runs, total wickets, total matches
 - Sum of runs by team (bar chart)
 - Total wins by team (bar chart)
@@ -71,13 +73,16 @@ Connected Power BI Desktop directly to the local MySQL database. Used **Power Qu
 - Navigation button to switch to Player Insight page
 
 **Page 2 — Player Insight**
-- KPI cards: Batsman strike rate, boundary %, bowler economy rate, total dot balls
+![IPL Player Insights Dashboard Screenshot](https://1drv.ms/i/c/c3fc1c78ffbc671c/IQAKqIriZ1zLTrcsVEqH3myUAV8UkFF1_-0xMwrDxQt_ZL8?e=ZUvw1r)
+- KPI cards: Batsman strike rate (adjusted to exclude wide balls), boundary %, bowler economy rate (strictly excluding leg-byes/byes), and total dot balls bowled.
+- Dynamic Page Title: Programmed custom conditional formatting using a `SELECTEDVALUE` DAX measure to automatically update the dashboard header text to show the active player's name upon selection.
 - Strike Rate vs Runs (scatter plot)
 - Economy Rate vs Wickets (scatter plot)
 - Toss decision breakdown by team (bat vs field)
 - Runs by match phase — Powerplay / Middle Overs / Death Overs (donut chart)
 - Wickets by match phase — Powerplay / Middle Overs / Death Overs (donut chart)
-- Slicers with search: **Batter**, **Bowler**, **Match Phase**, **Season** — enables head-to-head comparison between any selected batter and bowler
+- Slicers with search: **Batter**, **Bowler**, **Match Phase**, **Season** — enables strict head-to-head comparison.
+- Visual Interactions Control: Leveraged Power BI's "Edit Interactions" feature to decouple filter contexts between separate batsman and bowler selections. This isolates a standalone `H2H Wickets` custom DAX measure to track exact batter vs. bowler historical dismissals without breaking overall season stats.
 
 ---
 
@@ -91,19 +96,19 @@ A small discrepancy of **±1 match** exists in the 2025 regular-season counts fo
 
 - **Python** — Pandas (data wrangling), Matplotlib (visualization)
 - **Google Colab** — data extraction and cleaning environment
-- **MySQL** — relational database and SQL analysis
-- **Power BI Desktop** — interactive dashboarding, Power Query (data transformation)
+- **MySQL** — relational database and advanced SQL analysis (CTEs, Window Functions)
+- **Power BI Desktop & DAX** — Relational data modeling, Power Query transformations, and advanced custom measures
 
 ---
 
 ##  How to Reproduce
 
 1. Open `data_loading_and_setup.ipynb` in Google Colab, download the Cricsheet IPL zip, and run all cells to generate the 5 CSVs
-2. Run `mysql_setup.sql` in MySQL Workbench to create the database schema
+2. Run `01_schema.sql` in MySQL Workbench to create the database schema
 3. Import the 5 CSVs using the Table Data Import Wizard
-4. Run any query from `analysis_queries.sql` for SQL-level analysis
+4. Run any query from `02_match_analysis.sql`,`03_batting_analysis.sql`,`04_bowling_analysis.sql`,`05_window_functions.sql`,`06_business_insight.sql` for SQL-level analysis
 5. Open `visualization_notebook.ipynb` to recreate the Python charts
-6. Open `ipl_dashboard.pbix` in Power BI Desktop to explore the interactive dashboard
+6. Open `ipl_dashboard_.pbix` in Power BI Desktop to explore the interactive dashboard
 
 ---
 
