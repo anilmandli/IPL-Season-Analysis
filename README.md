@@ -10,7 +10,11 @@ A full data analytics pipeline built on real IPL data — from raw ball-by-ball 
 |---|---|
 | `data_loading_and_setup.ipynb` | Google Colab notebook — downloads raw ball-by-ball data, parses it, builds 5 clean tables, exports as CSV |
 | `01_schema.sql` | CREATE TABLE statements for all 5 tables |
-| `02_match_analysis.sql`,`03_batting_analysis.sql`,`04_bowling_analysis.sql`,`05_window_functions.sql`,`06_business_insight.sql` | 25 SQL analysis queries — basic to advanced, covering joins, CTEs, window functions, and business metrics |
+| `02_match_analysis.sql`,
+`03_batting_analysis.sql`,
+`04_bowling_analysis.sql`,
+`05_window_functions.sql`,
+`06_business_insight.sql` | 25 SQL analysis queries — basic to advanced, covering joins, CTEs, window functions, and business metrics |
 | `visualization_notebook.ipynb` | Python notebook using Pandas + Matplotlib for chart-based analysis on exported query results |
 | `ipl_dashboard_.pbix` | Power BI dashboard file — 2 interactive report pages |
 | `README.md` | This file |
@@ -73,7 +77,7 @@ Connected Power BI Desktop directly to the local MySQL database. Used **Power Qu
 - Navigation button to switch to Player Insight page
 
 **Page 2 — Player Insight**
-![IPL Player Insights Dashboard Screenshot](https://1drv.ms/i/c/c3fc1c78ffbc671c/IQAKqIriZ1zLTrcsVEqH3myUAV8UkFF1_-0xMwrDxQt_ZL8?e=ZUvw1r)
+![IPL Player Insights Dashboard Screenshot](https://1drv.ms/i/c/c3fc1c78ffbc671c/IQAKqIriZ1zLTrcsVEqH3myUAV8UkFF1_-0xMwrDxQt_ZL8?e=ZUvw1rhttps://1drv.ms/i/c/c3fc1c78ffbc671c/IQAKqIriZ1zLTrcsVEqH3myUAV8UkFF1_-0xMwrDxQt_ZL8?e=ZUvw1r)
 - KPI cards: Batsman strike rate (adjusted to exclude wide balls), boundary %, bowler economy rate (strictly excluding leg-byes/byes), and total dot balls bowled.
 - Dynamic Page Title: Programmed custom conditional formatting using a `SELECTEDVALUE` DAX measure to automatically update the dashboard header text to show the active player's name upon selection.
 - Strike Rate vs Runs (scatter plot)
