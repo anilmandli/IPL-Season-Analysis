@@ -65,7 +65,7 @@ Query results exported as CSV from MySQL Workbench, loaded into `visualization_n
 Connected Power BI Desktop directly to the local MySQL database. Used **Power Query** to unpivot the `team1`/`team2` columns in the matches table into a single `team_name` column (since Power BI only supports one active relationship per table pair) — this enabled accurate team-level filtering across all visuals.
 
 **Page 1 — Match Overview**
-![IPL Match Overview Dashboard Screenshot](images/Screenshot 2026-06-21 113332.png)
+![IPL Match Overview Dashboard Screenshot](images/Screenshot 2026-06-21  113332.png)
 )
 - KPI cards: Total runs, total wickets, total matches
 - Sum of runs by team (bar chart)
@@ -77,7 +77,7 @@ Connected Power BI Desktop directly to the local MySQL database. Used **Power Qu
 - Navigation button to switch to Player Insight page
 
 **Page 2 — Player Insight**
-![IPL Player Insights Dashboard Screenshot](images/Screenshot 2026-06-21 113354.png)
+![IPL Player Insights Dashboard Screenshot](images/Screenshot 2026-06-21  113354.png)
 - KPI cards: Batsman strike rate (adjusted to exclude wide balls), boundary %, bowler economy rate (strictly excluding leg-byes/byes), and total dot balls bowled.
 - Dynamic Page Title: Programmed custom conditional formatting using a `SELECTEDVALUE` DAX measure to automatically update the dashboard header text to show the active player's name upon selection.
 - Strike Rate vs Runs (scatter plot)
